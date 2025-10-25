@@ -21,7 +21,8 @@ body{
 
 .wrap{
   width:min(100%, 1400px);
-  padding: 24px;
+  padding: max(16px, env(safe-area-inset-top)) 16px max(16px, env(safe-area-inset-bottom)) 16px;
+  min-height: 100dvh; /* iOS: usa la altura real de la ventana */
 }
 
 .toolbar{
@@ -46,30 +47,24 @@ body{
 .btn[disabled]{ opacity:.4; cursor:not-allowed }
 
 .book{
+  position: relative;
   margin-inline: auto;
-  /* Más grande pero aún responsive */
   width: min(95vw, 1200px);
-  height: min(85vh, 800px);
+  height: min(85svh, 800px); /* svh/dvh evitan el bug del 100vh en iOS */
 }
+
+#flip-viewport{ width:100%; height:100%; }
 
 /* Páginas internas */
-.page{
-  background: var(--paper);
-  display:flex;
-}
-
+.page{ background: var(--paper); display:flex; }
 .page-content{
-  height: 100%;
-  width: 100%;
-  padding: 32px;
-  line-height: 1.65;
-  font-size: clamp(15px, 1.5vw, 19px);
+  height: 100%; width: 100%; padding: 32px; line-height: 1.65;
+  font-size: clamp(15px,1.5vw,19px);
   background-image:
     radial-gradient(1200px 800px at 50% 10%, rgba(0,0,0,.02), transparent 70%),
     repeating-linear-gradient(transparent, transparent 28px, rgba(0,0,0,.03) 29px, transparent 30px);
   box-shadow: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(0,0,0,.04);
-  border: 1px solid #e6e2da;
-  border-radius: 6px;
+  border: 1px solid #e6e2da; border-radius: 6px;
 }
 
 .page-content h2{ margin: 0 0 12px 0 }
@@ -77,3 +72,19 @@ body{
 
 /* Por si usas imágenes, que no provoquen saltos */
 .page-content img{ max-width:100%; height:auto; display:block }
+
+/* —————— MÓVIL (una sola página centrada) —————— */
+@media (max-width: 640px){
+  .book{
+    width: 100vw;
+    height: calc(100dvh - 120px); /* deja aire para la barra/botones */
+  }
+  /* Hacemos que el viewport sea un lienzo fijo centrado y escalado */
+  #flip-viewport{
+    position: absolute; left: 50%; top: 50%;
+    translate: -50% -50%;
+    width: 420px;   /* base fija para single-page */
+    height: 640px;  /* base fija */
+    transform-origin: top left; /* lo escalará el JS */
+  }
+}
