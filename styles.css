@@ -1,0 +1,79 @@
+:root{
+  --bg: #f3f0e9;
+  --ink: #1f2937;
+  --paper: #fbf7ef;
+  --accent: #3b82f6;
+}
+
+*{ box-sizing: border-box }
+html, body{ height:100% }
+body{
+  margin:0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans";
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #e7e2d6, transparent 70%),
+    var(--bg);
+  color: var(--ink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.wrap{
+  width:min(100%, 1400px);
+  padding: 24px;
+}
+
+.toolbar{
+  display:flex;
+  gap:14px;
+  align-items:center;
+  justify-content:center;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.btn{
+  border:0;
+  background: var(--accent);
+  color: #fff;
+  padding: 10px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0,0,0,.15);
+}
+.btn[disabled]{ opacity:.4; cursor:not-allowed }
+
+.book{
+  margin-inline: auto;
+  /* Más grande y alto */
+  width: min(98vw, 1500px);
+  height: min(92vh, 900px);
+}
+
+/* Páginas internas */
+.page{
+  background: var(--paper);
+  display:flex;
+}
+
+.page-content{
+  height: 100%;
+  width: 100%;
+  padding: 32px;
+  line-height: 1.65;
+  font-size: clamp(15px, 1.5vw, 19px);
+  background-image:
+    radial-gradient(1200px 800px at 50% 10%, rgba(0,0,0,.02), transparent 70%),
+    repeating-linear-gradient(transparent, transparent 28px, rgba(0,0,0,.03) 29px, transparent 30px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.7), inset 0 -1px 0 rgba(0,0,0,.04);
+  border: 1px solid #e6e2da;
+  border-radius: 6px;
+}
+
+.page-content h2{ margin: 0 0 12px 0 }
+.page-content p{ margin: 0 0 12px 0 }
+
+/* Por si usas imágenes, que no provoquen saltos */
+.page-content img{ max-width:100%; height:auto; display:block }

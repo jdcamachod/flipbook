@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Flipbook demo con StPageFlip</title>
+
+    <!-- PageFlip CSS (CDN) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.min.css">
+
+    <!-- Tu CSS -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="wrap">
+        <header class="toolbar">
+            <button id="prev" class="btn" aria-label="Página anterior">⟵ Anterior</button>
+            <button id="next" class="btn" aria-label="Página siguiente">Siguiente ⟶</button>
+        </header>
+
+        <section id="book" class="book">
+            <article class="page">
+                <div class="page-content">
+                    <h2>Portada</h2>
+                    <p>Bienvenido al flipbook. Dale a siguiente para pasar página.</p>
+                </div>
+            </article>
+
+            <article class="page">
+                <div class="page-content">
+                    <h2>Página 2</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere dui mi, at convallis
+                        tortor luctus non.</p>
+                </div>
+            </article>
+
+            <article class="page">
+                <div class="page-content">
+                    <h2>Página 3</h2>
+                    <p>Phasellus dapibus, velit at fermentum venenatis, enim felis semper risus, at semper massa purus
+                        ut urna.</p>
+                </div>
+            </article>
+
+            <article class="page">
+                <div class="page-content">
+                    <h2>Página 4</h2>
+                    <p>Donec luctus arcu vitae dui laoreet, id rhoncus nisl aliquet. Curabitur id suscipit lectus.</p>
+                </div>
+            </article>
+
+            <article class="page">
+                <div class="page-content">
+                    <h2>Página 5</h2>
+                    <p>Más contenido de muestra. Sí, esto es otro párrafo lorem porque tradición es tradición.</p>
+                </div>
+            </article>
+
+            <article class="page">
+                <div class="page-content">
+                    <h2>Contraportada</h2>
+                    <p>Fin del demo. Gracias por pasar las páginas sin romper nada.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!-- PageFlip JS (CDN) -->
+    <script src="https://cdn.jsdelivr.net/npm/page-flip/dist/js/page-flip.browser.min.js"></script>
+
+    <!-- Tu JS -->
+    <script src="main.js"></script>
+</body>
+
+</html>
