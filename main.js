@@ -17,15 +17,15 @@ let { width, height } = getDims();
 const pageFlip = new St.PageFlip(bookEl, {
   width,
   height,
-  size: 'stretch',
-  minWidth: 600,    // antes 480
-  minHeight: 450,   // antes 360
-  maxWidth: 2600,   // antes 2400
-  maxHeight: 1900,  // antes 1800
+  size: 'stretch',       // se adapta al contenedor .book
+  minWidth: 480,
+  minHeight: 360,
+  maxWidth: 2400,
+  maxHeight: 1800,
   drawShadow: true,
   flippingTime: 900,
   usePortrait: true,
-  autoSize: true,
+  autoSize: true,        // deja que reaccione al tamaño del contenedor
   showCover: false,
   mobileScrollSupport: true,
   maxShadowOpacity: 0.32,

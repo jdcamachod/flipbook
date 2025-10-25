@@ -47,9 +47,9 @@ body{
 
 .book{
   margin-inline: auto;
-  /* Más grande y alto */
-  width: min(98vw, 1500px);
-  height: min(92vh, 900px);
+  /* Más grande pero aún responsive */
+  width: min(95vw, 1200px);
+  height: min(85vh, 800px);
 }
 
 /* Páginas internas */
