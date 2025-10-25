@@ -1,38 +1,70 @@
-const bookEl = document.getElementById('book');
-const btnPrev = document.getElementById('prev');
-const btnNext = document.getElementById('next');
+const bookEl   = document.getElementById('book');
+const viewport = document.getElementById('flip-viewport');
+const btnPrev  = document.getElementById('prev');
+const btnNext  = document.getElementById('next');
 
-// StPageFlip con tamaño basado en contenedor
-// Truco: tomamos bounding rect y ajustamos una relación agradable (2:~1.35)
-function getDims(){
-  const rect = bookEl.getBoundingClientRect();
-  // Mantén márgenes: motor necesita valores enteros decentes
-  const width  = Math.floor(rect.width);
-  const height = Math.floor(rect.height);
-  return { width, height };
+const isMobile = () => window.matchMedia('(max-width: 640px)').matches;
+
+// Dimensiones base para el modo móvil (una página)
+const BASE_W = 420;
+const BASE_H = 640;
+
+// Dimensiones del contenedor para desktop/tablet (dos páginas)
+function getContainerDims(){
+  const r = bookEl.getBoundingClientRect();
+  return { width: Math.floor(r.width), height: Math.floor(r.height) };
 }
 
-let { width, height } = getDims();
+let pageFlip; // instancia
 
-const pageFlip = new St.PageFlip(bookEl, {
-  width,
-  height,
-  size: 'stretch',       // se adapta al contenedor .book
-  minWidth: 480,
-  minHeight: 360,
-  maxWidth: 2400,
-  maxHeight: 1800,
-  drawShadow: true,
-  flippingTime: 900,
-  usePortrait: true,
-  autoSize: true,        // deja que reaccione al tamaño del contenedor
-  showCover: false,
-  mobileScrollSupport: true,
-  maxShadowOpacity: 0.32,
-});
+function initFlip(){
+  if (pageFlip) {
+    pageFlip.destroy(); // limpia listeners/canvas
+  }
 
-// Carga desde el HTML
-pageFlip.loadFromHTML(bookEl.querySelectorAll('.page'));
+  if (isMobile()) {
+    // MÓVIL: una página fija centrada; el motor no se “mueve”, solo se escala
+    pageFlip = new St.PageFlip(viewport, {
+      width: BASE_W,
+      height: BASE_H,
+      size: 'fixed',
+      autoSize: false,
+      usePortrait: true,     // single page
+      drawShadow: true,
+      flippingTime: 900,
+      maxShadowOpacity: 0.28,
+      showCover: false,
+      mobileScrollSupport: true
+    });
+
+    pageFlip.loadFromHTML(viewport.querySelectorAll('.page'));
+    scaleMobile(); // primera escala
+  } else {
+    // DESKTOP/TABLET: dos páginas, estirado al contenedor
+    const dims = getContainerDims();
+    pageFlip = new St.PageFlip(bookEl, {
+      width: dims.width,
+      height: dims.height,
+      size: 'stretch',
+      autoSize: true,
+      usePortrait: true,     // la lib cambia a single-page si hace falta
+      drawShadow: true,
+      flippingTime: 900,
+      maxShadowOpacity: 0.32,
+      showCover: false,
+      mobileScrollSupport: true
+    });
+
+    pageFlip.loadFromHTML(bookEl.querySelectorAll('.page'));
+  }
+
+  // Controles
+  btnPrev.onclick = () => pageFlip.flipPrev();
+  btnNext.onclick = () => pageFlip.flipNext();
+
+  pageFlip.on('flip', updateButtons);
+  pageFlip.on('init', updateButtons);
+}
 
 function updateButtons(){
   const i = pageFlip.getCurrentPageIndex();
@@ -41,21 +73,33 @@ function updateButtons(){
   btnNext.disabled = i === total - 1;
 }
 
-pageFlip.on('init', updateButtons);
-pageFlip.on('flip', updateButtons);
+/* Escalado solo para móvil: centra y encaja el lienzo fijo en el contenedor */
+function scaleMobile(){
+  if (!isMobile()) return;
+  const br = bookEl.getBoundingClientRect();
+  const scale = Math.min(br.width / BASE_W, br.height / BASE_H);
+  viewport.style.transform = `scale(${scale})`;
+}
 
-btnPrev.addEventListener('click', () => pageFlip.flipPrev());
-btnNext.addEventListener('click', () => pageFlip.flipNext());
-
-// Teclado
-window.addEventListener('keydown', (e) => {
-  if (e.key === 'ArrowLeft') pageFlip.flipPrev();
-  if (e.key === 'ArrowRight') pageFlip.flipNext();
-});
-
-// Si cambia el tamaño del contenedor, actualizamos dimensiones del motor
+/* Observa cambios de tamaño/rotación */
 const ro = new ResizeObserver(() => {
-  const dims = getDims();
-  pageFlip.update(dims);
+  if (isMobile()) {
+    scaleMobile();
+  } else if (pageFlip) {
+    const dims = getContainerDims();
+    pageFlip.update(dims);
+  }
 });
 ro.observe(bookEl);
+
+/* Re-inicializa al cruzar el breakpoint (para que cambie de modo) */
+let lastMobile = isMobile();
+window.addEventListener('resize', () => {
+  const nowMobile = isMobile();
+  if (nowMobile !== lastMobile) {
+    lastMobile = nowMobile;
+    initFlip(); // recrea con el modo correcto
+  }
+});
+
+initFlip();
