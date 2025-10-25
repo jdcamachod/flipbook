@@ -50,7 +50,9 @@ body{
   position: relative;
   margin-inline: auto;
   width: min(95vw, 1200px);
-  height: min(88svh, 880px);
+  /* usamos altura real del viewport como en mobile */
+  height: calc(100dvh - 120px);
+  max-height: 1000px; /* tope de seguridad para pantallas enormes */
 }
 
 #flip-viewport{ width:100%; height:100%; }
@@ -154,4 +156,49 @@ figure img{
     height: 640px;  /* base fija */
     transform-origin: top left; /* lo escalará el JS */
   }
+}
+
+
+/* ===== Portada ===== */
+.portada {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.portada .title-xl {
+  font-size: clamp(36px, 5vw, 60px);
+  margin-bottom: 10px;
+}
+
+.portada .subtitle {
+  font-size: clamp(16px, 1.5vw, 22px);
+  font-weight: 500;
+  color: #374151;
+  opacity: 0.9;
+  margin-bottom: 20px;
+}
+
+.autores {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 16px;
+  display: grid;
+  gap: 6px;
+  font-size: clamp(15px, 1.3vw, 20px);
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.autores li {
+  letter-spacing: 0.3px;
+}
+
+.portada .hero img {
+  max-width: 380px;
+  margin: 0 auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.1);
+  object-fit: contain;
 }
