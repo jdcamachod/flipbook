@@ -38,6 +38,20 @@ function initFlip(){
     });
 
     pageFlip.loadFromHTML(viewport.querySelectorAll('.page'));
+    document.querySelectorAll('#flip-viewport img').forEach(img => {
+  img.addEventListener('load', () => {
+    if (typeof pageFlip?.update === 'function') {
+      if (window.matchMedia('(max-width: 640px)').matches) {
+        // móvil: solo reescala el viewport si usas el modo de viewport fijo
+        if (typeof scaleMobile === 'function') scaleMobile();
+      } else {
+        // desktop/tablet: que el motor ajuste al contenedor
+        const r = bookEl.getBoundingClientRect();
+        pageFlip.update({ width: Math.floor(r.width), height: Math.floor(r.height) });
+      }
+    }
+  }, { once: true });
+});
     scaleMobile(); // primera escala
   } else {
     // DESKTOP/TABLET: dos páginas, estirado al contenedor

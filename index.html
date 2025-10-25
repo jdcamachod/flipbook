@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Flipbook demo con StPageFlip</title>
+    <title>Mi libro: Derechos Humanos para niñas y niños</title>
 
     <!-- PageFlip CSS (CDN) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/page-flip/dist/css/page-flip.min.css">
@@ -22,52 +22,187 @@
 
         <section id="book" class="book">
             <div id="flip-viewport">
+                <!-- 1. Portada -->
                 <article class="page">
                     <div class="page-content">
-                        <h2>Portada</h2>
-                        <p>Bienvenido al flipbook. Dale a siguiente para pasar página.</p>
+                        <h1 class="title-xl">Derechos Humanos: Guía práctica</h1>
+                        <p class="lead">Qué son, para qué sirven y cómo defenderlos sin convertirte en abogado en el
+                            intento.</p>
+                        <figure class="hero">
+                            <img src="images/img-01.png"
+                                alt="Personas diversas formando un círculo alrededor de un símbolo de equilibrio" />
+                            <figcaption>Todos nacemos con derechos. Sin membresías VIP.</figcaption>
+                        </figure>
                     </div>
                 </article>
 
+                <!-- 2. Qué son -->
                 <article class="page">
                     <div class="page-content">
-                        <h2>Página 2</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere dui mi, at convallis
-                            tortor luctus non.</p>
+                        <h2>¿Qué son los derechos humanos?</h2>
+                        <p>Son garantías básicas que protegen la dignidad de todas las personas. No se compran, no se
+                            negocian, no se pierden al dormir.</p>
+                        <ul class="checklist">
+                            <li><strong>Universales:</strong> aplican a todas las personas.</li>
+                            <li><strong>Inalienables:</strong> no te los pueden quitar.</li>
+                            <li><strong>Interdependientes:</strong> se sostienen entre sí.</li>
+                            <li><strong>Iguales:</strong> no hay categorías “premium”.</li>
+                        </ul>
+                        <figure>
+                            <img src="images/img-02.png"
+                                alt="Iconos de igualdad, libertad, seguridad y justicia conectados" />
+                        </figure>
                     </div>
                 </article>
 
+                <!-- 3. Un poco de historia -->
                 <article class="page">
                     <div class="page-content">
-                        <h2>Página 3</h2>
-                        <p>Phasellus dapibus, velit at fermentum venenatis, enim felis semper risus, at semper massa
-                            purus
-                            ut urna.</p>
-                    </div>
-                </article>
-
-                <article class="page">
-                    <div class="page-content">
-                        <h2>Página 4</h2>
-                        <p>Donec luctus arcu vitae dui laoreet, id rhoncus nisl aliquet. Curabitur id suscipit lectus.
+                        <h2>Un poco de historia</h2>
+                        <p>Tras la Segunda Guerra Mundial, el mundo dijo “basta”. En 1948 se aprobó la
+                            <strong>Declaración Universal de los Derechos Humanos</strong> (DUDH). Desde entonces,
+                            tratados y constituciones han ido aterrizando esos principios.
                         </p>
+                        <blockquote class="pull">La DUDH no es un adorno: guía leyes, políticas públicas y decisiones
+                            judiciales.</blockquote>
+                        <figure>
+                            <img src="images/img-03.png" alt="Una asamblea internacional votando un documento" />
+                        </figure>
                     </div>
                 </article>
 
+                <!-- 4. Grandes familias de derechos -->
                 <article class="page">
                     <div class="page-content">
-                        <h2>Página 5</h2>
-                        <p>Más contenido de muestra. Sí, esto es otro párrafo lorem porque tradición es tradición.</p>
+                        <h2>Grandes familias de derechos</h2>
+                        <div class="grid-2">
+                            <div>
+                                <h3>Civiles y políticos</h3>
+                                <ul>
+                                    <li>Vida e integridad</li>
+                                    <li>Libertad de expresión</li>
+                                    <li>Debido proceso</li>
+                                    <li>Participación política</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h3>Económicos, sociales y culturales</h3>
+                                <ul>
+                                    <li>Educación</li>
+                                    <li>Salud</li>
+                                    <li>Trabajo digno</li>
+                                    <li>Cultura y ciencia</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <figure>
+                            <img src="images/img-04.png"
+                                alt="Dos columnas de derechos equilibradas sobre una balanza" />
+                        </figure>
                     </div>
                 </article>
 
+                <!-- 5. Ejemplos cotidianos -->
                 <article class="page">
                     <div class="page-content">
-                        <h2>Contraportada</h2>
-                        <p>Fin del demo. Gracias por pasar las páginas sin romper nada.</p>
+                        <h2>¿Cómo se ven en la vida real?</h2>
+                        <ul class="bullets">
+                            <li>Que puedas <strong>opinar</strong> sin miedo a represalias.</li>
+                            <li>Que tengas acceso a <strong>educación y salud</strong>.</li>
+                            <li>Que la policía respete <strong>reglas y límites</strong>.</li>
+                            <li>Que tu información personal se <strong>proteja</strong>.</li>
+                        </ul>
+                        <figure>
+                            <img src="images/img-05.png"
+                                alt="Viñetas de situaciones cotidianas: escuela, hospital, comisaría, teléfono con candado" />
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- 6. Obligaciones del Estado -->
+                <article class="page">
+                    <div class="page-content">
+                        <h2>¿Quién debe garantizar los derechos?</h2>
+                        <p>Principalmente el Estado, que tiene tres tareas simples de decir y difíciles de cumplir:</p>
+                        <ol>
+                            <li><strong>Respetar:</strong> no vulnerarlos.</li>
+                            <li><strong>Proteger:</strong> evitar que terceros los violen.</li>
+                            <li><strong>Garantizar:</strong> crear condiciones para ejercerlos.</li>
+                        </ol>
+                        <figure>
+                            <img src="images/img-06.png"
+                                alt="Tres escudos con acciones: respetar, proteger, garantizar" />
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- 7. Tu papel -->
+                <article class="page">
+                    <div class="page-content">
+                        <h2>¿Y nosotros qué?</h2>
+                        <p>También tenemos responsabilidades: informarnos, no discriminar, exigir rendición de cuentas y
+                            participar en la comunidad.</p>
+                        <div class="callout info">
+                            <strong>Tip:</strong> documenta todo. Guarda fechas, capturas y contactos. La memoria vence
+                            al ruido.
+                        </div>
+                        <figure>
+                            <img src="images/img-07.png" alt="Persona tomando notas y guardando evidencias digitales" />
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- 8. Mitos comunes -->
+                <article class="page">
+                    <div class="page-content">
+                        <h2>Mitos vs realidades</h2>
+                        <ul class="myths">
+                            <li><strong>Mito:</strong> “Son ideas abstractas.” <br><strong>Realidad:</strong> influyen
+                                en tu trabajo, tu médico y tu libertad.</li>
+                            <li><strong>Mito:</strong> “Solo protegen a delincuentes.” <br><strong>Realidad:</strong>
+                                protegen a todas las personas, víctimas incluidas.</li>
+                            <li><strong>Mito:</strong> “Cambian cada gobierno.” <br><strong>Realidad:</strong> están
+                                reconocidos en tratados que obligan al Estado.</li>
+                        </ul>
+                        <figure>
+                            <img src="images/img-08.png"
+                                alt="Carteles con la palabra mito tachada y realidad resaltada" />
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- 9. Cómo actuar -->
+                <article class="page">
+                    <div class="page-content">
+                        <h2>Si algo no está bien</h2>
+                        <ul class="steps">
+                            <li>Habla con una persona de confianza o una organización local.</li>
+                            <li>Usa canales formales: defensoría, fiscalía, línea de atención.</li>
+                            <li>Si es seguro, documenta y busca apoyo colectivo.</li>
+                        </ul>
+                        <figure>
+                            <img src="images/img-09.png" alt="Camino con señales: ayuda, denuncia, apoyo" />
+                        </figure>
+                    </div>
+                </article>
+
+                <!-- 10. Recursos -->
+                <article class="page">
+                    <div class="page-content">
+                        <h2>Para seguir aprendiendo</h2>
+                        <ul>
+                            <li>Declaración Universal de los Derechos Humanos (texto completo).</li>
+                            <li>Convención sobre los Derechos del Niño y del Adolescente.</li>
+                            <li>Guías de tu defensoría u organismo nacional de derechos humanos.</li>
+                        </ul>
+                        <p class="footnote">Este libro es divulgativo. No reemplaza asesoría legal.</p>
+                        <figure>
+                            <img src="images/img-10.png" alt="Biblioteca con libros de derechos y justicia" />
+                        </figure>
                     </div>
                 </article>
             </div>
+
         </section>
     </main>
 
@@ -76,6 +211,23 @@
 
     <!-- Tu JS -->
     <script src="main.js"></script>
+    <script>
+        // Después de crear pageFlip y cargar las páginas:
+        document.querySelectorAll('#flip-viewport img').forEach(img => {
+            img.addEventListener('load', () => {
+                // Desktop/tablet: actualizar dimensiones al contenedor
+                if (!window.matchMedia('(max-width: 640px)').matches) {
+                    const r = bookEl.getBoundingClientRect();
+                    pageFlip.update({ width: Math.floor(r.width), height: Math.floor(r.height) });
+                } else {
+                    // Móvil con viewport fijo: reescala el lienzo si tienes scaleMobile()
+                    if (typeof scaleMobile === 'function') scaleMobile();
+                }
+            }, { once: true });
+        });
+    </script>
+
+
 </body>
 
 </html>
